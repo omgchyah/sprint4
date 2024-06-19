@@ -1,0 +1,564 @@
+1. To install laravel using composer command:
+
+composer global require laravel/installer
+
+2. to create new project:
+
+laravel new example-app
+
+OR 2. Install Laravel Breeze:
+
+composer require laravel/breeze --dev
+php artisan breeze:install
+
+Would you like to install a starter kit? [No starter kit]:
+  [none     ] No starter kit
+  [breeze   ] Laravel Breeze
+  [jetstream] Laravel Jetstream
+
+Laravel starter kits are pre-built templates for common application types, such as authentication and UI scaffolding.
+Types of Starter Kits
+    Breeze: A simple starter kit for basic authentication and minimal UI scaffolding. Use this if you need a simple authentication system with minimal frontend scaffolding.
+    Jetstream: A more robust starter kit that includes features like teams, profile management, and API support. Jetstream offers two stacks: Livewire (for server-side rendering) and Inertia.js (for client-side rendering with Vue.js). Use this if you need more advanced features like two-factor authentication, team management, or if you prefer using Livewire or Inertia.js.
+
+3. Starting with breeze:
+
+ Which Breeze stack would you like to install? [Blade with Alpine]:   
+  [blade              ] Blade with Alpine
+  [livewire           ] Livewire (Volt Class API) with Alpine
+  [livewire-functional] Livewire (Volt Functional API) with Alpine    
+  [react              ] React with Inertia
+  [vue                ] Vue with Inertia
+  [api                ] API only
+
+Blade Templates: Breeze uses Laravel's Blade templating engine, which is very beginner-friendly and easy to grasp.
+Choosing the Right Stack
+
+    Blade with Alpine: Best for beginners or small projects that require minimal JavaScript. It's simple and easy to understand.
+	Blade: Laravel's simple, powerful templating engine. It provides a clean syntax for embedding PHP code within your HTML templates.
+	Alpine.js: A minimal, lightweight JavaScript framework for adding interactive behavior to your HTML. It pairs well with Blade for small enhancements without needing a full JavaScript framework.
+
+    Livewire (Volt Class API) with Alpine: Good for dynamic applications where you want to avoid writing JavaScript. The class API style is more traditional and might be easier to adopt for existing Laravel developers.
+	Livewire (Volt Class API) with Alpine
+    Livewire: A full-stack framework for Laravel that makes building dynamic interfaces simple, without leaving the comfort of Laravel. Livewire allows you to use PHP instead of JavaScript to build interactive applications.
+    Volt Class API: A new API style in Livewire that organizes components using classes. This is more traditional and familiar to Laravel developers.
+    Alpine.js: Used for small interactive behaviors in conjunction with Livewire.
+
+    Livewire (Volt Functional API) with Alpine: Similar to the class API, but uses a more functional approach, which might be more concise for certain types of components.
+	Livewire: Same as above, but using the Volt Functional API.
+Volt Functional API: A new API style in Livewire that uses a more functional approach. This can be more concise and easier to reason about for certain types of components.
+Alpine.js: Used alongside Livewire to handle simple interactions.
+    React with Inertia: Ideal for developers familiar with React who want to build modern, dynamic SPAs while leveraging Laravel's backend.
+    Vue with Inertia: Best for developers who prefer Vue.js for building SPAs, combined with Laravel's backend.
+    API only: Best for projects where Laravel serves as a backend API for a frontend built with another technology or for mobile applications. API Only: This option sets up a Laravel project without any frontend scaffolding. It's ideal if you are building a backend-only application or a RESTful API that will be consumed by a frontend built with a different technology (e.g., a mobile app, a SPA built with React/Vue/Angular, etc.).
+
+4.  Would you like dark mode support? (yes/no) [no]: yes
+Dark mode is a popular feature that allows users to switch to a darker color scheme, which can be easier on the eyes in low-light environments.
+
+5.  Which testing framework do you prefer? [Pest]:
+  [0] Pest
+  [1] PHPUnit
+
+When prompted with "Which testing framework do you prefer? [Pest]:", you have the option to choose between Pest and PHPUnit. Here’s a brief overview of each to help you decide:
+Pest
+
+    Simplicity: Pest is designed to be a simpler and more expressive testing framework compared to PHPUnit.
+    Readable Syntax: It has a more readable and concise syntax, which can be easier for beginners to understand and use.
+    Extension of PHPUnit: Pest is built on top of PHPUnit, so you still have access to all PHPUnit features if needed.
+
+PHPUnit
+
+    Standard Framework: PHPUnit is the standard testing framework for PHP and is widely used in the industry.
+    Comprehensive: It is very powerful and comprehensive, providing a wide range of features for testing complex applications.
+    Familiarity: If you are already familiar with PHPUnit or expect to work on projects that use it, this might be a better choice.
+
+if you want to try both Pest and PHPUnit, choosing Pest is a good option because Pest is built on top of PHPUnit. This means you can write Pest tests for a simpler and more expressive syntax while still having the ability to write or run PHPUnit tests if needed.
+
+6.  Would you like to initialize a Git repository? (yes/no) [no]:        
+ > yes
+
+7.  Which database will your application use? [SQLite]: mysql
+  [sqlite ] SQLite
+  [mysql  ] MySQL
+  [mariadb] MariaDB
+  [pgsql  ] PostgreSQL (Missing PDO extension)
+  [sqlsrv ] SQL Server (Missing PDO extension)
+ >
+
+Choosing the Right Database
+
+For Beginners or Small Projects:
+
+    SQLite: Easiest to set up and use. Ideal for learning and small projects.
+	Pros:
+
+    Simple and lightweight.
+    No setup required (uses a single file).
+    Good for small projects, prototypes, and testing.
+
+	Cons:
+
+    Not suitable for high-traffic applications.
+    Limited concurrency support.
+
+When to Use: Ideal for small projects, development, and testing environments.
+
+For Most Applications:
+
+    MySQL: Widely used, good performance, and easy to find resources and support.
+    MariaDB: Similar to MySQL but with additional features and improvements.
+	Pros:
+
+    Widely used and well-supported.
+    Good performance for read-heavy operations.
+    Scalable and reliable.
+
+	Cons:
+
+    Can be complex to set up and manage.
+
+When to Use: Suitable for most applications, from small to large scale.
+
+For Advanced Features:
+
+    PostgreSQL: Offers advanced features and strong data integrity.
+
+For Microsoft Ecosystems:
+
+    SQL Server: Best for applications integrated with Microsoft products.
+
+8.  Default database updated. Would you like to run the default database migrations? (yes/no) [yes]: yes
+
+	What Are Migrations?
+
+Migrations are a way to version control your database schema. They allow you to define the structure of your database tables in code, making it easy to manage changes over time and share the schema with other developers.
+Example of Running Migrations
+
+Assuming you chose yes, Laravel will automatically run the migrations for you. Here’s what happens behind the scenes:
+
+    Migrate Command: Laravel runs the php artisan migrate command, which executes all the migration files in the database/migrations directory.
+
+    Creating Tables: The migration files typically create tables for user management, password resets, and any other default features provided by Laravel Breeze or other packages you may have installed.
+
+9. Application ready in [example-app]. You can start your local development using:
+➜ cd example-app
+➜ php artisan serve
+Once you have started the Artisan development server, your application will be accessible in your web browser at http://localhost:8000. Next, you're ready to start taking your next steps into the Laravel ecosystem. Of course, you may also want to configure a database.
+
+10. Laravel Sail
+Laravel Sail is a lightweight command-line interface for interacting with Laravel's Docker development environment. Sail provides a simple way to run your Laravel application using Docker without requiring you to install PHP, a web server, or a database server on your local machine.
+Key Features of Laravel Sail
+
+    Pre-configured Docker Environment: Sail provides a pre-configured Docker environment, making it easy to get started with Laravel development.
+    Supports Multiple Services: Sail supports running services like MySQL, PostgreSQL, Redis, MailHog, and Selenium.
+    Simplicity: It simplifies the setup process for Laravel applications, particularly for developers who might not be familiar with Docker.
+	Laravel Sail is an excellent tool for developers who want to use Docker to manage their development environment. It simplifies the setup process and provides a consistent environment for running Laravel applications. By using Sail, you can avoid the complexities of managing local PHP, web server, and database installations, making it easier to focus on developing your application.
+
+11. Configuration environment
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=example_app
+DB_USERNAME=omgchya
+DB_PASSWORD=Yur1.12345
+
+12. Install Dependencies:
+Ensure all dependencies are installed using Composer and npm/yarn:
+
+composer install
+npm install
+npm run dev
+
+13. Generate Application Key:
+php artisan key:generate
+
+14. Run Migrations:
+Run the database migrations to set up your database schema:
+php artisan migrate
+
+15. Additional Steps for Apache or Nginx
+
+If you prefer to use Apache or Nginx as your web server, you’ll need to configure your virtual hosts or server blocks.
+
+Apache Configuration Example:
+
+apache
+
+<VirtualHost *:80>
+    ServerName example-app.local
+    DocumentRoot /path/to/example-app/public
+
+    <Directory /path/to/example-app/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+16. environment configuration
+
+Setting Up the .env File
+
+After creating a new Laravel project, you'll have a .env.example file in your project's root directory. Copy this file to .env:
+
+cp .env.example .env
+
+Then, generate an application key:
+
+
+php artisan key:generate
+
+This key is used to encrypt session data and other sensitive information.
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:...
+APP_DEBUG=true
+APP_URL=http://localhost
+
+    APP_NAME: The name of your application.
+    APP_ENV: The environment your application is running in (local, production, etc.).
+    APP_KEY: The application key, which should be set automatically by the php artisan key:generate command.
+    APP_DEBUG: Whether debug mode is enabled.
+    APP_URL: The base URL of your application.
+
+17. Cache Configuration
+
+Laravel provides an expressive, unified API for various caching backends. By default, Laravel is configured to use the file cache driver, which stores the serialized, cached objects in the filesystem.
+
+Set your cache driver in the .env file:
+
+plaintext
+
+CACHE_DRIVER=file
+
+18. MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+
+
+Steps to Configure Mail Settings
+
+    Sign Up for Mailtrap:
+        Go to Mailtrap and sign up for a free account if you don't already have one.
+
+MAIL_MAILER=smtp
+
+MAIL_HOST=live.smtp.mailtrap.io
+
+MAIL_PORT=587
+
+MAIL_USERNAME=api
+
+MAIL_PASSWORD=********e4c4
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="mailtrap@demomailtrap.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+19. Testing the Configuration
+
+To ensure that your mail settings are working correctly, you can send a test email. You can use Laravel's Tinker or create a simple route to test the email functionality.
+
+Using Laravel Tinker:
+
+sh
+
+php artisan tinker
+
+Copy this in the tinker shell
+
+> use Illuminate\Support\Facades\Mail; Mail::raw('This
+ is a test email', function ($message) {    $message->
+to('rossana.liendo@gmail.com')            ->subject('T
+est Email');});    
+
+Receive an email :)
+
+Example Code for a Test Route
+
+Alternatively, you can create a test route to send the email:
+
+    Add Route in routes/web.php:
+
+    php
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/send-test-email', function () {
+    Mail::raw('This is a test email', function ($message) {
+        $message->to('you@example.com')
+                ->subject('Test Email');
+    });
+
+    return 'Test email sent!';
+});
+
+Visit the Route:
+Open your browser and go to http://localhost:8000/send-test-email to trigger the test email.
+
+20. Queue Configuration Steps
+Laravel provides a unified API for different queue backends. You can choose from several backends including database, Beanstalkd, Amazon SQS, Redis, and others.
+
+Open your .env file and set the QUEUE_CONNECTION to database:
+
+QUEUE_CONNECTION=database
+
+Step 3: Migrate the Database
+
+Laravel's database queue driver stores job information in a database table. You need to create this table by running a migration:
+
+    Generate the migration:
+
+    sh
+
+php artisan queue:table
+
+Run the migration:
+
+sh
+
+php artisan migrate
+
+21.Create a Job
+
+Next, let's create a new job class. Jobs are queued by dispatching job classes, which are stored in the app/Jobs directory.
+
+php artisan make:job SendTestEmail
+
+Define the job logic:
+Open the newly created job file in app/Jobs/SendTestEmail.php and update it to send an email. Here’s an example:
+
+namespace App\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
+
+class SendTestEmail implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $email;
+
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        Mail::raw('This is a test email from the queue system.', function ($message) {
+            $message->to($this->email)
+                    ->subject('Test Email');
+        });
+    }
+}
+
+22. Dispatch the Job
+
+You can dispatch jobs from anywhere in your application. For this example, let's create a route that dispatches the SendTestEmail job.
+
+    Add a Route to Dispatch the Job:
+    Open routes/web.php and add the following route:
+
+    php
+
+use App\Jobs\SendTestEmail;
+
+Route::get('/dispatch-email', function() {
+    $email = 'rossana.liendo@gmail.com';
+    SendTestEmail::dispatch($email);
+    return 'Email dispatched!';
+});
+
+Visit the Route:
+Open your browser and go to http://localhost:8000/dispatch-email. This will dispatch the email job to the queue.
+
+23. Process the Jobs
+
+Now you need to run the queue worker to process the jobs. Laravel provides an Artisan command to start a queue worker that will process jobs in the background.
+
+    Start the Queue Worker:
+    Open a new terminal window and run the following command:
+
+    sh
+
+php artisan queue:work
+
+This command will start a queue worker that processes jobs from the default queue.
+
+24. Filesystem configuration
+Laravel provides a unified API for various filesystem drivers, including local, FTP, SFTP, and Amazon S3. You can configure the filesystem settings in the config/filesystems.php file and the .env file.
+
+Step-by-Step Configuration
+
+    Update .env File:
+    Add your filesystem driver settings to your .env file. For example, for local storage:
+
+    plaintext
+
+FILESYSTEM_DRIVER=local
+
+For Amazon S3:
+
+plaintext
+
+FILESYSTEM_DRIVER=s3
+AWS_ACCESS_KEY_ID=your-access-key-id
+AWS_SECRET_ACCESS_KEY=your-secret-access-key
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=your-bucket-name
+AWS_URL=
+
+Update config/filesystems.php:
+Ensure the config/filesystems.php file has the appropriate configurations. By default, it should already be set up correctly, but you can customize it as needed:
+
+php
+
+'default' => env('FILESYSTEM_DRIVER', 'local'),
+
+'disks' => [
+
+    'local' => [
+        'driver' => 'local',
+        'root' => storage_path('app'),
+    ],
+
+    'public' => [
+        'driver' => 'local',
+        'root' => storage_path('app/public'),
+        'url' => env('APP_URL').'/storage',
+        'visibility' => 'public',
+    ],
+
+    's3' => [
+        'driver' => 's3',
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION'),
+        'bucket' => env('AWS_BUCKET'),
+        'url' => env('AWS_URL'),
+        'endpoint' => env('AWS_ENDPOINT'),
+    ],
+
+],
+
+composer require league/flysystem-aws-s3-v3 "^3.0"
+
+Using Storage Facade:
+You can now use Laravel’s Storage facade to interact with your configured filesystem. For example, to store a file:
+
+php
+
+use Illuminate\Support\Facades\Storage;
+
+Storage::disk('s3')->put('file.txt', 'Contents');
+
+In a Controller Method:
+
+php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class FileController extends Controller
+{
+    public function upload()
+    {
+        // Put a file on the S3 disk
+        Storage::disk('s3')->put('file.txt', 'Contents');
+
+        return 'File uploaded successfully!';
+    }
+}
+
+Define a Route:
+Define a route to call this method. Open routes/web.php and add:
+
+php
+
+use App\Http\Controllers\FileController;
+
+Route::get('/upload', [FileController::class, 'upload']);
+
+Update Your .env File:
+Ensure your .env file has the correct AWS S3 credentials:
+
+plaintext
+
+FILESYSTEM_DRIVER=s3
+AWS_ACCESS_KEY_ID=your-access-key-id
+AWS_SECRET_ACCESS_KEY=your-secret-access-key
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=your-bucket-name
+AWS_URL=
+AWS_ENDPOINT=
+
+File uploaded successfully!
+
+25. Configuring Trusted Proxies
+
+When your application is behind a proxy server (like a load balancer), you need to configure Laravel to trust the proxy and correctly handle headers.
+
+Configuring trusted proxies in Laravel is essential when your application is behind a proxy server, such as a load balancer or CDN. This ensures that Laravel correctly handles request headers like X-Forwarded-For, X-Forwarded-Proto, and X-Forwarded-Port.
+
+Create the Middleware:
+If the TrustProxies middleware does not exist, you can create it manually.
+
+sh
+
+php artisan make:middleware TrustProxies
+
+
+namespace App\Http\Middleware;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Middleware\TrustProxies as Middleware;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
+
+class TrustProxies extends Middleware
+{
+    /**
+     * The trusted proxies for this application.
+     *
+     * @var array|string|null
+     */
+    protected $proxies;
+
+    /**
+     * The headers that should be used to detect proxies.
+     *
+     * @var int
+     */
+    protected $headers = SymfonyRequest::HEADER_X_FORWARDED_ALL;
+}
+
+If the app/Http/Kernel.php file does not exist in your Laravel application, it's highly unusual because this file is a core part of the Laravel framework structure. It might indicate that your Laravel installation is incomplete or corrupt.
+
+Create a Fresh Laravel Project (if needed):
+If your current installation is missing files, you might consider creating a fresh Laravel project to ensure everything is in place:
+
+sh
+
+composer create-project --prefer-dist laravel/laravel example-app
+cd example-app
+

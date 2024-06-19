@@ -1,0 +1,141 @@
+Laravel desde cero
+
+1.composer global require laravel/installer
+
+laravel new 'project name'
+
+Starter kit? none
+
+Testing? Pest
+
+Repository? Yes
+
+SQLite? Yes
+
+Desde la carpeta public/index.php
+
+2. Para crear una ruta más rápido
+
+C:/Windows/System32/drivers/etc
+
+abrir archivo hosts
+
+127.0.0.1 blog.test
+
+Guardar cambios
+
+abrir file xampp/apache/config/extra/http-vhosts
+
+Usar y copiar la plantilla
+Eliminar error log, customlog
+Quitar los ## comentarios
+
+servername blog.test
+Document Root "C:/xampp/htdocs/.../proyecto"
+
+Crear uno para el dashboard
+servername localhost
+Document Root "C:/xampp/htdocs"
+
+Reiniciar Xampp
+
+3. Rutas
+
+URI es todo lo que va después del dominio '/'
+Routes está dentro de la carpeta routes/web.php
+
+Crear ruta nueva:
+
+Route::get('/ruta', function(){
+	return "Vista del contenido";
+})
+
+//Get las que hacemos cuando escribimos una URL o hacemos click sobre un enlace
+
+
+No solo deficinir la URI sino el tipo de peticion
+
+En vez de trabar con rutas, trabajamos con parámetros que son variables
+
+//parámetros son contenido variables
+Route::get('/posts/{post}', function($post){
+    return "Aquí se mostrará el post {$post}";
+});
+
+Se puede pasar más de un parámetro
+
+El orden de las rutas es importante
+
+4. Controladores
+Contienen la lógica
+
+Se llama artisan el comando:
+
+php artisan make::controller 'Nombre'Controller ej. HomController
+
+Luego en la ruta se llama al controlador y método
+
+Route::get('/', [HomeController::class, 'index']);
+
+Hacer click más ctrl sobre el nombre del controlador para ir al archivo
+
+Cuando un controlador tiene un solo metodo le damos un nombre como  __invoke en vez de index
+
+Se puede pasar solo el cotrolador sinm el metodo
+
+5. Vistas
+
+Documentos php en resource/views
+Creamos una página php
+Y luego desde el controlador llamamos al helper view()
+
+Ej: view('home')
+
+Laravel sabe que estamos trabajando en una vista por el .blade.php
+
+Directivas de blade
+@php
+@foreach
+@endforeach
+
+6. componentes
+
+Un componente se define una sola vez y se llama
+Para crear un componente se crea una carpeta views/components
+Creamos nuestro archivo y luego lo llamamos
+
+<x-'nombre del archivo sin incluir'>
+
+SIEMPRE CERRARLO
+
+pARA HACERLO VARIABLE, crear una variable $slot dentro de nuestro compenente {{ $slot }}
+
+Y llamarlo dentro de nuestro <x-'componente'>
+
+7. PLANTILLAS
+
+Crear un component y crear la estructura repetitiva
+
+Se usa componentes normalmente, pero también se pueden usar plantillas usando el método @yield y @section
+@stack es para contenido variable y se llamas a @push
+
+
+8. Conectar a base datos
+
+en la carpeta config/database.php nos conectamos con la base de datos
+
+'default' => env('DB_CONNECTION', 'sqlite'),
+
+env es el archivo donde esta la conexion y liego el tipo de base de datos
+
+env esta en la raiz del proyecto en la variable DB_CONNECTION
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=blog
+DB_USERNAME=omgchyah
+DB_PASSWORD=Yur1.12345
+
+Luego en terminal
+php artisan migrate
