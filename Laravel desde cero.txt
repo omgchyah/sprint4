@@ -139,3 +139,138 @@ DB_PASSWORD=Yur1.12345
 
 Luego en terminal
 php artisan migrate
+
+9. Migraciones desde folder database/migrations
+
+Método up hace la migració
+php artisan migrate
+
+Método down deshace los cambios
+php artisan migrate:rollback
+
+En la tabla migrations, lleva un registro de migraciones
+
+crear una tabla
+php artisan make:migration 'nombre de tabla'
+
+php artisan make:migration create_categories_table
+
+Le decimos a Laravel que queremos crear una tabla de nombre categories
+
+Luego de crear la table, escribimos el comando
+php artisan migrate
+
+php artisan migrate:refresh
+Ejecuta los métodos down de todas las migraciones
+
+y luego ejecuta las migraciones de nuevo 
+
+php artisan migrate:fresh
+
+No me ejecuta los métodos down, sino que elimina todas las tablas
+
+Las crea nuevamente desde cero
+
+Si todas las tablas son con migraciones, se puede usar refresh o fresh
+
+Si las tablas se crean manualmente en phpadmin, mejor usar migrate:refresh, no borra las tablas escritas manualmente
+
+Rollback es un método destructivo
+
+Cuando queramos modificar una tabla con registros y querramos modificar la tabla
+
+php artisan make:migration add_avatar_to_users_table
+
+Se crea un php nueva y allí agregar la columna nueva para el método up and down
+
+Usar ->after para elegir orden en la table
+
+Cada vez que se modifica una tabla, agregar la columna nullable para que no dé error
+
+10. Eloquent
+Laravel tiene un ORM para no escribir una sentencia query de SQL
+Mapeo - objeto - relacional
+
+Para trabajar con eloquent, creamos los modelos
+
+Crear modelo con php artisan make:model NombreModelo
+
+Conectar desde archivo routes/web.php
+Creando la ruta
+
+->save
+Class::all()
+Class::find()
+Class::where
+Class::orderBy
+
+En el modelo hay que decir con que tabla se trabajar
+
+ESCRIBIR TODO EN INGLÉS
+
+11. Mutadores y accesores, setters y getters
+
+Desde el formulario, el usuario puede escribir de diferentes maneras
+Para unificar la grafia, usamos mutadores
+
+Se usa un método protected
+
+Illuminate\Database\Eloquent\Casts\Attribute;
+
+    protected function title(): Attribute
+    {
+        return Attribute::make(
+            set: function($value){
+                return strtolower($value);
+            }
+        );
+    }
+
+12.Casting
+
+    //return $post->published_at->format('d/m/Y');
+
+    return dd($post->is_active);
+
+Custom casts
+
+Lo convierte a la forma de almacenar y mostrar
+
+13. Seeders
+Tener cierta cantidad de posts y registros
+Que haya un usuario creado sin importar la migracion
+
+En el archivo database/seedersDatabaseSeeder.php
+
+php artisan db:seed
+
+Se puede crear archivos seeders aparte cuando hay mayor cantidad de datos
+
+php artisan make:seeder UserSeeder
+
+Creas tus seeders separados para cada objeto y desde el DatabaseSeeder se usa la funcion call 
+
+        $this->call([
+            UserSeeder::class,
+            PostSeeder::class,
+        ]);
+
+php artisan migrate:fresh --seed
+
+14. Factories
+
+A menudo se usa en conjunto con los seeders para crear registros
+
+En el archivo database/factories/UserFactory.php
+
+Usa libreria fakerphp.com
+
+Llevan el nombre del modelo que lo va a utilizar y la terminacion Factory
+
+Para usarlos hay que ir al DatabaseSeeder
+
+php artisan migrate:fresh --seed
+
+Para crear nuestro propio factory
+
+php artisan make:factory PostFactory
