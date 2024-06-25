@@ -3,11 +3,29 @@ Recipe Finder Project:
 - Allow users to search for recipes by entering available ingredients.
 - Provide detailed recipe information including ingredients, steps, and cooking time.
 -Enable user accounts for saving favorite recipes and custom ingredient lists.
+-(OPTIONAL! Probably won't do it due to time strains) Enable users to create new recipes.
 
 UI
--Search form for entering ingredients.
+-User login/register page.
+-Home page with search functionality.
 -Display search results with recipe summaries.
 -Recipe detail pages.
+-User dashboard for saved recipes.
+(OPTIONAL)-Form page to create a new recipe
+
+Workflow and User Interaction
+    -User Registration and Login:
+     Users can create an account and log in to access personalized features.
+    -Search for Recipes:
+      Users input available ingredients in the search bar.
+      The system returns recipes that can be made with those ingredients.
+    -View Recipe Details:
+      Users can click on a recipe to view detailed instructions and ingredients.
+    Save Favorite Recipes:
+      Logged-in users can save their favorite recipes for easy access later.
+      	-Create recipes:
+	Users can create and save recipes.
+
 
 Database
 Tables for users, recipes, ingredients, and recipe-ingredient relationships.
@@ -28,8 +46,8 @@ Recipes Table:
 	Cooking time
 	difficulty level: easy, med, hard
 	type: gluten-free, vegan, vegetarian
-    	created_by: Foreign key referencing users (NULLABLE)
-    	created_at and updated_at timestamps
+    	(OPTIONAL) created_by: Foreign key referencing users (NULLABLE)
+    	(OPTIONAL) created_at and updated_at timestamps
 
 Ingredients Table:
     	id: Primary key
@@ -38,6 +56,11 @@ Ingredients Table:
 Recipe_Ingredients Table:
     	recipe_id: Foreign key referencing recipes
     	ingredient_id: Foreign key referencing ingredients
+	unit: Metric system
     	quantity: Quantity of the ingredient
+
+Favorite_recipes table:
+	id_recipe
+	id_user
 
 
