@@ -1,0 +1,51 @@
+hungerKiller
+
+1. laravel new-project hungerKiller
+
+Options: Breeze, lirewire, MySQL, Pest with repository
+
+2. Creates models and migrations for my tables
+php artisan make:model Recipe -m
+php artisan make:model Ingredient -m
+
+3. Agregar atributos a las tablas desde mi capeta database/migrations
+
+    public function up(): void
+    {
+        Schema::create('recipes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->text('instructions');
+            $table->timestamps();
+        });
+    }
+
+    public function up(): void
+    {
+        Schema::create('ingredients', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+4. Crear la tabla relacional entre recetas e ingredientes
+
+
+php artisan make:migration create_ingredient_recipe_table
+
+    public function up(): void
+    {
+        Schema::create('ingredient_recipe', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('recipe_id')->constrained()->onDelete('cascade');
+            $table->foreignId('ingredient_id')->constrained()->onDelete('cascade');
+            $table->integer('quantity');
+            $table->string('measurement');
+            $table->timestamps();
+        });
+    }
+
+5.Hacer migracions para crear las tablas
+php artisan migrate
