@@ -3,6 +3,41 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Laravel & PHP specific ignores
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.idea
+/.vscode
+.env
+.env.backup
+.phpunit.result.cache
+
+# IDE specific ignores
+/.vscode
+/.idea
+*.sublime-project
+*.sublime-workspace
+
+# Laravel specific
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/framework/*
+/storage/logs/*
+/bootstrap/cache/*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Composer specific
+composer.lock
+
+
 # User-specific files
 *.rsuser
 *.suo

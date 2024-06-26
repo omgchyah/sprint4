@@ -274,3 +274,12 @@ php artisan migrate:fresh --seed
 Para crear nuestro propio factory
 
 php artisan make:factory PostFactory
+
+15. Rutas
+
+php artisan r:l
+Para mostrar rutas
+
+Como hacer una sola linea de codigo para rutas
+
+Route::resource

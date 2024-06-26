@@ -1,5 +1,39 @@
 Recipe Finder Project:
 
+NIVELL 1:
+
+-Home page with search functionality.
+-Display search results with recipe summaries.
+-Recipe detail pages.
+
+Database
+Tables for users, recipes, ingredients, and recipe-ingredient relationships.
+
+Recipes Table:
+    	id: Primary key
+    	title: Recipe title
+    	description: Detailed description
+    	instructions: Cooking instructions
+	Prep time
+	Cooking time
+	difficulty level: easy, med, hard
+	type: gluten-free, vegan, vegetarian
+    	(OPTIONAL) created_by: Foreign key referencing users (NULLABLE)
+    	(OPTIONAL) created_at and updated_at timestamps
+
+Ingredients Table:
+    	id: Primary key
+    	name: Ingredient name
+
+Recipe_Ingredients Table:
+    	recipe_id: Foreign key referencing recipes
+    	ingredient_id: Foreign key referencing ingredients
+	unit: Metric system
+    	quantity: Quantity of the ingredient
+
+
+
+
 - Allow users to search for recipes by entering available ingredients.
 - Provide detailed recipe information including ingredients, steps, and cooking time.
 -Enable user accounts for saving favorite recipes and custom ingredient lists.
