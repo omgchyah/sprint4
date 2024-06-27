@@ -16,11 +16,20 @@ php artisan make:model Ingredient -m
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->enum('difficulty',['easy','medium','hard']);
+            $table->enum('category',
+            ['appetizer','main course','side dish','dessert','salad','soup','beverage','snack'
+            ]);
+            $table->enum('restrictions',
+            ['vegan','vegetarian','gluten-free'
+            ])->nullable();
             $table->text('instructions');
+            $table->integer('prep_time');
+            $table->integer('cooking_time');
+            $table->integer('total_time');
             $table->timestamps();
         });
     }
-
     public function up(): void
     {
         Schema::create('ingredients', function (Blueprint $table) {
@@ -48,4 +57,54 @@ php artisan make:migration create_ingredient_recipe_table
     }
 
 5.Hacer migracions para crear las tablas
-php artisan migrate
+php artisan migrate:fresh
+
+6. Configura mi base de datos MySQL en el archivo .env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hungerkiller
+DB_USERNAME=omgchyah
+DB_PASSWORD=Yur1.12345
+
+7. Usar seeders para poblar mis tablas
+
+php artisan make:seeder IngredientSeeder
+php artisan make:seeder RecipeSeeder
+php artisan make:seeder IngredientRecipeSeeder
+php artisan make:seeder 
+
+9. Modificar el archivo Database Seeder
+
+    public function run(): void
+    {
+        //Register the IngredientSeeder and RecipeSeeder
+        $this->call([
+            IngredientSeeder::class,
+            RecipeSeeder::class,
+            IngredientRecipeSeeder::class,
+        ]);
+    }
+
+10. Run the seeder para poblar mis tablas
+php artisan db:seed --class=IngredientSeeder
+OR
+php artisan db:seed
+
+11. Crear un controlador para mi home page y recipes
+php artisan make:controller HomeController
+php artisan make:controller RecipeController
+
+12. Modificar Routes
+
+IMPORTANTE USAR NAMESPACES
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RecipeController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', HomeController::class);
+No es un array porque usa el método __invoke
+
+Route::get('/recipes', [RecipeController::class, 'index']);
+
